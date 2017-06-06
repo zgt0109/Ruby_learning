@@ -27,12 +27,17 @@ fayuan_renwei = resp['fayuan_renwei']
 doc_type = resp['doc_type']
 judge_level = resp['judge_level']
 
-# pp resp
+pp resp
 
-pp origin_content
+# pp origin_content
 # puts '*'*100
 # 调用本地接口测试
 url = URI.parse('http://localhost:3000/looklaw')
+
+if case_type == '执行案件'
+  judge_level = ''
+end
+
 data = {
     'case_type': case_type.sub('案件',''),
     'judge_level': judge_level,
@@ -47,28 +52,3 @@ begin
 rescue
   puts id_no
 end
-
-
-
-# 1   require 'net/https'
-# 2   require 'uri'
-# 3
-# 4   def post_api(api, args)
-# 5     uri = URI.parse api
-# 6     http = Net::HTTP.new(uri.host, uri.port)
-# 7     http.use_ssl = true
-# 8     req = Net::HTTP::Post.new(uri.request_uri)
-# 9     req.set_form_data(args)
-# 10     response = http.request(req)
-# 11     JSON.load(response.body)
-# 12   end
-# 13
-# 14   def get_api(api, args)
-# 15     uri = URI.parse api
-# 16     uri.query = args.collect { |a| "#{a[0]}=#{URI::encode(a[1].to_s)}" }.join('&')
-# 17     http = Net::HTTP.new(uri.host, uri.port)
-# 18     http.use_ssl = true
-# 19     req = Net::HTTP::Get.new(uri.request_uri)
-# 20     response = http.request(req)
-# 21     JSON.load(response.body)
-# 22   end
