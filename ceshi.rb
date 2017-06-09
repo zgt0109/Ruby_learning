@@ -30,7 +30,7 @@ judge_level = resp['judge_level']
 pp resp
 
 # pp origin_content
-# puts '*'*100
+puts '*'*150
 # 调用本地接口测试
 url = URI.parse('http://localhost:3000/looklaw')
 
